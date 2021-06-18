@@ -26,27 +26,37 @@ def p_ratio(gamma, m1, beta = pi/2):
     m1n = m1*np.sin(beta)
     return 1 + 2 * gamma / (gamma + 1) * (m1n**2 - 1) 
 
-def rho_ratio(gamma, m1n, beta = 90):
+def rho_ratio(gamma, m1, beta = pi/2):
     """
     Density ratio across the shock
     """
+    m1n = m1*np.sin(beta)
     return (gamma  + 1)*m1n**2 / (2 + (gamma - 1 )*m1n**2)
 
-def u_ratio(gamma, m1n, beta = 90):
+def u_ratio(gamma, m1, beta = pi/2):
     """
     Velocity ratio across the shock
     """
+    m1n = m1*np.sin(beta)
     return 1 / rho_ratio(gamma, m1n)
 
-def t_ratio(gamma, m1n, beta = 90):
+def t_ratio(gamma, m1, beta = pi/2):
     """
     Temperature ratio across the shock
     """
+    m1n = m1*np.sin(beta)
     return p_ratio(gamma, m1n) / rho_ratio(gamma, m1n)
 
-def m2n(gamma, m1n, beta = 0):
+def m2(gamma, m1, theta = 0, beta = pi/2):
+    """
+    Mach number after the shock
+    """
+    m1n = m1*np.sin(beta)
+
     num = m1n**2 + 2/(gamma-1)
     den = (2*gamma)/(gamma - 1) * m1n**2 - 1
-    return np.sqrt( num / den )
+    m2n = np.sqrt( num / den )
+
+    return m2n/np.sin(beta-theta)
 
 
