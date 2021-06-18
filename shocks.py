@@ -15,7 +15,7 @@ def idealGas(R, P=0, rho=0, T=0):
 
 def speedOfSound(gamma, R, T):
     """
-    Weak Isentropic Wave
+    Weak Isentropic Wave (sound wave)
     """
     return np.sqrt(gamma* R * T)
 
@@ -50,6 +50,7 @@ def t_ratio(gamma, m1, beta = pi/2):
 def m2(gamma, m1, theta = 0, beta = pi/2):
     """
     Mach number after the shock
+    Use for mach numbers greater than 1.3 and heat capacity ratio greater than 1
     """
     m1n = m1*np.sin(beta)
 
@@ -61,7 +62,7 @@ def m2(gamma, m1, theta = 0, beta = pi/2):
 
 def thetaBetaM(g, theta, m, d = 1,angle="rad"):
     """
-    Returns beta given gamma, theta, and Mach number
+    Returns shock angle for given gamma, deflection angle, and Mach number
 
     Specify the angle you are using
     angle = 'rad' (default)
