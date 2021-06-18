@@ -11,4 +11,12 @@ def idealGas(R, P=0, rho=0, T=0):
         return P / (R * T)
     else:
         return P / (rho * R)
-    
+
+def speedOfSound(gamma, R, T):
+    """
+    Weak Isentropic Wave
+    """
+    return np.sqrt(gamma* R * T)
+
+
+
