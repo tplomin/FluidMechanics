@@ -76,14 +76,14 @@ def thetaBetaM(g, theta, m, d = 1,angle="rad"):
         theta_r = theta*pi/180
     else:
         theta_r = theta
-    # do stuff
+        
     l = np.sqrt((m**2-1)**2 - 3*(1 + (g-1)/2*m**2)*(1+(g+1)/2*m**2)*np.tan(theta_r)**2)
     x = 1/l**3*((m**2-1)**3-9*(1+(g-1)/2*m**2)*(1+(g-1)/2*m**2+(g+1)/4*m**4)*np.tan(theta_r)**2)
     tanbeta_n = m**2 - 1 + 2*l*np.cos((4*pi*d+np.arccos(x))/3)
     tanbeta_d = 3*(1+ (g-1)/2*m**2)*np.tan(theta_r)
 
     beta = np.arctan(tanbeta_n/tanbeta_d)
-    
+
     if angle == "deg":
         return beta*180/pi
     else:
